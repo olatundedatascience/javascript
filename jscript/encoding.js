@@ -89,25 +89,42 @@
      var afa = numbers.concat(alpah);
      var upperChase = alpah.toUpperCase();
      var finalString ="";
-     var toChoseFrom ="";
+     var toChoseFrom =alpah;
      if(inludeNumbers && includeSpecialChar && includeUpperCase && isAlpha) {
         toChoseFrom = numbers.concat(specialChar).concat(afa).concat(upperChase);
      }
      else if(inludeNumbers & !(isAlpha|| includeSpecialChar || includeUpperCase)) {
-         toChoseFrom += numbers + alpah;;
+         toChoseFrom += numbers;
+     }
+     else if(inludeNumbers && includeUpperCase && !(isAlpha || includeSpecialChar)) {
+        toChoseFrom += numbers.concat(upperChase);
+    }
+     else if(inludeNumbers && includeSpecialChar && !(isAlpha || includeUpperCase)) {
+         toChoseFrom += numbers.concat(specialChar);
+     }
+     else if(includeSpecialChar && !(isAlpha|| inludeNumbers || includeUpperCase)) {
+         toChoseFrom += specialChar;
+     }
+     else if(includeSpecialChar && includeUpperCase && !(isAlpha|| inludeNumbers)) {
+        toChoseFrom += specialChar.concat(upperChase);
+    }
+     else if(includeUpperCase && !(isAlpha|| inludeNumbers || includeSpecialChar) ) {
+         toChoseFrom += includeSpecialChar;
      }
     else if(isAlpha) {
-        var ij = numbers + alpah;
+        var ij = numbers + afa;
         toChoseFrom += ij;
      }
      else {
-         toChoseFrom = alpah;
+         toChoseFrom = numbers;
      }
      toChoseFrom = myOwnReserve(toChoseFrom).split("");
+     /*
      for(var i=0;i<toChoseFrom.length;i++) {
          finalString += toChoseFrom[i];
          
      }
+     */
      var lek = toChoseFrom.length;
      //toChoseFrom = toChoseFrom.split("");
      /*
@@ -127,7 +144,7 @@
         toChoseFrom[i] = itemIndex;
     }
     toChoseFrom = toChoseFrom.join("");
-     
+     /* --https://www.kirupa.com/canvas/index.htm  useful links*/
      return toChoseFrom.substring(0, len);;
  }
  var ki = generatedPassword(30, true, true, true, true);
